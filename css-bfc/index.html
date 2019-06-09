@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://qiniublog.cuilei.top/2019-06-09T20:05:52+08:00Image-2.png">
 <meta property="og:image" content="http://qiniublog.cuilei.top/2019-06-09T20:05:52+08:00DraggedImage.png">
 <meta property="og:image" content="http://qiniublog.cuilei.top/2019-06-09T20:05:52+08:00DraggedImage-1.png">
-<meta property="og:updated_time" content="2019-06-09T12:15:52.985Z">
+<meta property="og:updated_time" content="2019-06-09T12:29:13.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS BFC 深入浅出">
 <meta name="twitter:description" content="BFC block formatting context">
@@ -367,12 +367,24 @@
                 
               
 
-              <time title="创建时间：2019-06-09 13:47:59 / 修改时间：20:15:52" itemprop="dateCreated datePublished" datetime="2019-06-09T13:47:59+08:00">2019-06-09</time>
+              <time title="创建时间：2019-06-09 13:47:59" itemprop="dateCreated datePublished" datetime="2019-06-09T13:47:59+08:00">2019-06-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-09 20:29:13" itemprop="dateModified" datetime="2019-06-09T20:29:13+08:00">2019-06-09</time>
               
             
           </span>
@@ -477,10 +489,10 @@
 <p>一个块格式化上下文包括创建它的元素内部所有内容，除了被包含于创建新的块级格式化上下文的后代元素内的元素。<br>块格式化上下文对于定位 (参见 float) 与清除浮动 (参见 clear) 很重要。定位和清除浮动的样式规则只适用于处于同一块格式化上下文内的元素。浮动不会影响其它块格式化上下文中元素的布局，并且清除浮动只能清除同一块格式化上下文中在它前面的元素的浮动。</p>
 <p><strong>张鑫旭对 BFC 的描述</strong></p>
 <p> <a href="http://www.zhangxinxu.com/wordpress/2015/02/css-deep-understand-flow-bfc-column-two-auto-layout/" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2015/02/css-deep-understand-flow-bfc-column-two-auto-layout/</a><br>BFC全称”Block Formatting Context”, 中文为“块级格式化上下文”。啪啦啪啦特性什么的，一言难尽，大家可以自行去查找，我这里不详述，免得乱了主次，总之，记住这么一句话：BFC元素特性表现原则就是，内部子元素再怎么翻江倒海，翻云覆雨都不会影响外部的元素。所以，避免margin穿透啊，清除浮动什么的也好理解了。</p>
-<h1 id="float-清除浮动"><a href="#float-清除浮动" class="headerlink" title="float 清除浮动"></a>float 清除浮动</h1><p>用clickfix没有副作用。BFC方法会有副作用。</p>
+<h3 id="float-清除浮动"><a href="#float-清除浮动" class="headerlink" title="float 清除浮动"></a>float 清除浮动</h3><p>用clickfix没有副作用。BFC方法会有副作用。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span></span><br><span class="line">    display: block</span><br><span class="line">    clear: both</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="position-脱离文档流"><a href="#position-脱离文档流" class="headerlink" title="position 脱离文档流"></a>position 脱离文档流</h1><p>html,css 如何消除position:absolute定位脱离文档流的影响？**<br><strong>绝对定位会脱离文档流，父级div的宽高就没有了，怎么消除这个影响呢？像浮动有清除浮动。</strong></p>
+<h3 id="position-脱离文档流"><a href="#position-脱离文档流" class="headerlink" title="position 脱离文档流"></a>position 脱离文档流</h3><p>html,css 如何消除position:absolute定位脱离文档流的影响？**<br><strong>绝对定位会脱离文档流，父级div的宽高就没有了，怎么消除这个影响呢？像浮动有清除浮动。</strong></p>
 <p>个人认为这个没有css办法可以直接消除，通常的做法是：<br>1.父元素有两个子元素，一个是定宽和绝对定位，另一个是自适应宽度，父元素靠另一个元素撑开；<br>2.如果一定要实现题主的效果，可以用js控制，页面加载的时候判断子元素高度，用js设置父元素的高度等于或者大于子元素（看具体需要）</p>
 
       
@@ -763,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用例子回答什么是-BFC"><span class="nav-number">1.</span> <span class="nav-text">用例子回答什么是 BFC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#父元素和子元素"><span class="nav-number">1.1.</span> <span class="nav-text">父元素和子元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兄弟之间划清界限用"><span class="nav-number">1.2.</span> <span class="nav-text">*兄弟之间划清界限用 *</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部子元素之间上下margin合并"><span class="nav-number">1.3.</span> <span class="nav-text">内部子元素之间上下margin合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#In-addition-to-the-root-element-of-our-document-lt-html-gt-a-new-BFC-is-created-in-the-following-situations"><span class="nav-number">2.</span> <span class="nav-text">In addition to the root element of our document (&lt;html&gt;) ,a new BFC is created in the following situations:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS规范中对-BFC-的描述9-4-1-块格式化上下文"><span class="nav-number">3.</span> <span class="nav-text">CSS规范中对 BFC 的描述9.4.1 块格式化上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDN-对-BFC-的描述"><span class="nav-number">4.</span> <span class="nav-text">MDN 对 BFC 的描述</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#float-清除浮动"><span class="nav-number"></span> <span class="nav-text">float 清除浮动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#position-脱离文档流"><span class="nav-number"></span> <span class="nav-text">position 脱离文档流</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用例子回答什么是-BFC"><span class="nav-number">1.</span> <span class="nav-text">用例子回答什么是 BFC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#父元素和子元素"><span class="nav-number">1.1.</span> <span class="nav-text">父元素和子元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兄弟之间划清界限用"><span class="nav-number">1.2.</span> <span class="nav-text">*兄弟之间划清界限用 *</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部子元素之间上下margin合并"><span class="nav-number">1.3.</span> <span class="nav-text">内部子元素之间上下margin合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#In-addition-to-the-root-element-of-our-document-lt-html-gt-a-new-BFC-is-created-in-the-following-situations"><span class="nav-number">2.</span> <span class="nav-text">In addition to the root element of our document (&lt;html&gt;) ,a new BFC is created in the following situations:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS规范中对-BFC-的描述9-4-1-块格式化上下文"><span class="nav-number">3.</span> <span class="nav-text">CSS规范中对 BFC 的描述9.4.1 块格式化上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDN-对-BFC-的描述"><span class="nav-number">4.</span> <span class="nav-text">MDN 对 BFC 的描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#float-清除浮动"><span class="nav-number">4.1.</span> <span class="nav-text">float 清除浮动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-脱离文档流"><span class="nav-number">4.2.</span> <span class="nav-text">position 脱离文档流</span></a></li></ol></li></ol></div>
             
 
           </div>
