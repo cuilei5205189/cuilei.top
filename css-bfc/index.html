@@ -19,7 +19,7 @@
 <meta property="og:description" content="BFC block formatting context">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.cuilei.top/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-18T04:02:45.389Z">
+<meta property="og:updated_time" content="2019-11-05T10:12:28.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS BFC 深入浅出">
 <meta name="twitter:description" content="BFC block formatting context">
@@ -119,6 +119,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -170,8 +174,11 @@
   on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+子元素`float`之后，父元素塌陷，不再包裹子元素。
+![][image-1]
+触发**父元素的BFC**之后，父元素不在塌陷，仍然包裹子元素。
+![][image-2]
 
-<p>子元素<code>float</code>之后，父元素塌陷，不再包裹子元素。<br><img src="http://qiniublog.cuilei.top/2019-06-09T20:05:52+08:00Image.png" alt><br>触发<strong>父元素的BFC</strong>之后，父元素不在塌陷，仍然包裹子元素。<br><img src="http://qiniublog.cuilei.top/2019-06-09T20:05:52+08:00Image-1.png" alt></p>
 <h3 id="兄弟之间划清界限用"><a href="#兄弟之间划清界限用" class="headerlink" title="*兄弟之间划清界限用 *"></a>*兄弟之间划清界限用 *</h3><p><code>float</code>之后，两个元素重叠在一起。另一个元素，触发BFC之后，两个元素不再重叠。<br><img src="http://qiniublog.cuilei.top/2019-06-09T20:05:52+08:00Image-2.png" alt></p>
 <h3 id="内部子元素之间上下margin合并"><a href="#内部子元素之间上下margin合并" class="headerlink" title="内部子元素之间上下margin合并"></a>内部子元素之间上下margin合并</h3><p><a href="https://codepen.io/cuilei5205189/pen/mGpwyq?editors=1100" target="_blank" rel="noopener">https://codepen.io/cuilei5205189/pen/mGpwyq?editors=1100</a><br>BFC也可以阻止父元素与其第一个或最后一个子元素之间的外边距合并。<br>也就是 里面的出不去</p>
 <p>最前面和最后面子元素margin泄露出来。<br><img src="http://qiniublog.cuilei.top/2019-06-09T20:05:52+08:00DraggedImage.png" alt></p>
@@ -262,16 +269,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/js-data-structure-transfer/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/js-gc/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">JavaScript 数据类型转换</span>
+                <span class="level-item">JavaScript 垃圾回收机制</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/js-asynchronous/">
-                <span class="level-item">JavaScript 异步</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/js-data-structure-transfer/">
+                <span class="level-item">JavaScript 数据类型转换</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -348,7 +355,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        7
                     </p>
                 </div>
             </div>
@@ -358,7 +365,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        4
                     </p>
                 </div>
             </div>
@@ -368,7 +375,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
@@ -411,6 +418,22 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/科技/">
+            <span class="level-start">
+                <span class="level-item">科技</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/科技/公司/">
+            <span class="level-start">
+                <span class="level-item">公司</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/编程/">
             <span class="level-start">
                 <span class="level-item">编程</span>
@@ -437,7 +460,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Asynchronous/" style="font-size: 10px;">Asynchronous</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Garbage-Collection/" style="font-size: 10px;">Garbage_Collection</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Memory-Management/" style="font-size: 10px;">Memory_Management</a>
+        <a href="/tags/Asynchronous/" style="font-size: 10px;">Asynchronous</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CuiLei/" style="font-size: 10px;">CuiLei</a> <a href="/tags/Garbage-Collection/" style="font-size: 15px;">Garbage_Collection</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Memory-Management/" style="font-size: 15px;">Memory_Management</a>
     </div>
 </div>
     
@@ -445,12 +468,86 @@
         <div class="column-right-shadow is-hidden-widescreen is-sticky">
         
             
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#用例子回答什么是-BFC">
+        <span class="has-mr-6">1</span>
+        <span>用例子回答什么是 BFC</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#父元素和子元素">
+        <span class="has-mr-6">1.1</span>
+        <span>父元素和子元素</span>
+        </a></li><li>
+        <a class="is-flex" href="#兄弟之间划清界限用">
+        <span class="has-mr-6">1.2</span>
+        <span>*兄弟之间划清界限用 *</span>
+        </a></li><li>
+        <a class="is-flex" href="#内部子元素之间上下margin合并">
+        <span class="has-mr-6">1.3</span>
+        <span>内部子元素之间上下margin合并</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#In-addition-to-the-root-element-of-our-document-lt-html-gt-a-new-BFC-is-created-in-the-following-situations">
+        <span class="has-mr-6">2</span>
+        <span>In addition to the root element of our document (&lt;html&gt;) ,a new BFC is created in the following situations:</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS规范中对-BFC-的描述9-4-1-块格式化上下文">
+        <span class="has-mr-6">3</span>
+        <span>CSS规范中对 BFC 的描述9.4.1 块格式化上下文</span>
+        </a></li><li>
+        <a class="is-flex" href="#MDN-对-BFC-的描述">
+        <span class="has-mr-6">4</span>
+        <span>MDN 对 BFC 的描述</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#float-清除浮动">
+        <span class="has-mr-6">4.1</span>
+        <span>float 清除浮动</span>
+        </a></li><li>
+        <a class="is-flex" href="#position-脱离文档流">
+        <span class="has-mr-6">4.2</span>
+        <span>position 脱离文档流</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
         
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-08T06:10:19.000Z">2019-11-08</time></div>
+                    <a href="/cuilei-test3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">cuilei test3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/科技/">科技</a> / <a class="has-link-grey -link" href="/categories/科技/公司/">公司</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T10:03:03.000Z">2019-11-05</time></div>
+                    <a href="/cuilei-test2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">cuilei-test2</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -483,19 +580,6 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
-                    <a href="/js-data-structure-transfer/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaScript 数据类型转换</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
                     <a href="/css-bfc/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS BFC 深入浅出</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
@@ -504,65 +588,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-08T05:47:59.000Z">2019-06-08</time></div>
-                    <a href="/js-asynchronous/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaScript 异步</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">十月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">六月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
     </div>
 </div>
         
@@ -578,12 +603,86 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#用例子回答什么是-BFC">
+        <span class="has-mr-6">1</span>
+        <span>用例子回答什么是 BFC</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#父元素和子元素">
+        <span class="has-mr-6">1.1</span>
+        <span>父元素和子元素</span>
+        </a></li><li>
+        <a class="is-flex" href="#兄弟之间划清界限用">
+        <span class="has-mr-6">1.2</span>
+        <span>*兄弟之间划清界限用 *</span>
+        </a></li><li>
+        <a class="is-flex" href="#内部子元素之间上下margin合并">
+        <span class="has-mr-6">1.3</span>
+        <span>内部子元素之间上下margin合并</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#In-addition-to-the-root-element-of-our-document-lt-html-gt-a-new-BFC-is-created-in-the-following-situations">
+        <span class="has-mr-6">2</span>
+        <span>In addition to the root element of our document (&lt;html&gt;) ,a new BFC is created in the following situations:</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS规范中对-BFC-的描述9-4-1-块格式化上下文">
+        <span class="has-mr-6">3</span>
+        <span>CSS规范中对 BFC 的描述9.4.1 块格式化上下文</span>
+        </a></li><li>
+        <a class="is-flex" href="#MDN-对-BFC-的描述">
+        <span class="has-mr-6">4</span>
+        <span>MDN 对 BFC 的描述</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#float-清除浮动">
+        <span class="has-mr-6">4.1</span>
+        <span>float 清除浮动</span>
+        </a></li><li>
+        <a class="is-flex" href="#position-脱离文档流">
+        <span class="has-mr-6">4.2</span>
+        <span>position 脱离文档流</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-08T06:10:19.000Z">2019-11-08</time></div>
+                    <a href="/cuilei-test3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">cuilei test3</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/科技/">科技</a> / <a class="has-link-grey -link" href="/categories/科技/公司/">公司</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T10:03:03.000Z">2019-11-05</time></div>
+                    <a href="/cuilei-test2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">cuilei-test2</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -616,19 +715,6 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
-                    <a href="/js-data-structure-transfer/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaScript 数据类型转换</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
                     <a href="/css-bfc/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS BFC 深入浅出</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
@@ -637,65 +723,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-08T05:47:59.000Z">2019-06-08</time></div>
-                    <a href="/js-asynchronous/" class="title has-link-black-ter is-size-6 has-text-weight-normal">JavaScript 异步</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">十月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">六月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
     </div>
 </div>
     
