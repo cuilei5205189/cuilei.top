@@ -11,7 +11,7 @@
 
 
     <meta name="description" content="不管什么程序语言，内存生命周期基本是一致的：    分配你所需要的内存 使用分配到的内存（读、写） 不需要时将其释放，归还  所有语言第二部分都是明确的。第一和第三部分在底层语言中是明确的，但在像JavaScript这些高级语言中，大部分都是隐含的。">
-<meta name="keywords" content="JavaScript">
+<meta name="keywords" content="JavaScript,Memory_Management,Garbage_Collection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 垃圾回收机制">
 <meta property="og:url" content="http://www.cuilei.top/js-gc/index.html">
@@ -19,7 +19,7 @@
 <meta property="og:description" content="不管什么程序语言，内存生命周期基本是一致的：    分配你所需要的内存 使用分配到的内存（读、写） 不需要时将其释放，归还  所有语言第二部分都是明确的。第一和第三部分在底层语言中是明确的，但在像JavaScript这些高级语言中，大部分都是隐含的。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.cuilei.top/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-05T03:02:22.729Z">
+<meta property="og:updated_time" content="2019-11-05T08:55:42.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 垃圾回收机制">
 <meta name="twitter:description" content="不管什么程序语言，内存生命周期基本是一致的：    分配你所需要的内存 使用分配到的内存（读、写） 不需要时将其释放，归还  所有语言第二部分都是明确的。第一和第三部分在底层语言中是明确的，但在像JavaScript这些高级语言中，大部分都是隐含的。">
@@ -31,13 +31,13 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+<link rel="icon" href="/assets/images/cuilei-favicon.ico">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai.css">
 
 
     
@@ -60,7 +60,15 @@
 <link rel="stylesheet" href="/css/back-to-top.css">
 
     
-    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114651434-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-114651434-2');
+</script>
+
     
     
     
@@ -81,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="JavaScript 垃圾回收机制" height="28">
+                <img src="/assets/images/cuilei-logo.png" alt="JavaScript 垃圾回收机制" height="28">
             
             </a>
         </div>
@@ -90,32 +98,33 @@
             <div class="navbar-start">
                 
                 <a class="navbar-item"
-                href="/">Home</a>
+                href="/archives">归档</a>
                 
                 <a class="navbar-item"
-                href="/archives">Archives</a>
+                href="/categories">类别</a>
                 
                 <a class="navbar-item"
-                href="/categories">Categories</a>
+                href="/tags">标签</a>
                 
                 <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
+                href="/about">关于我</a>
                 
             </div>
             
             <div class="navbar-end">
                 
                     
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/cuilei5205189">
                         
                         <i class="fab fa-github"></i>
                         
                     </a>
                     
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
@@ -147,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1776 个字)
+                    12 分钟 读完 (大约 1769 个字)
                 </span>
                 
                 
@@ -160,9 +169,7 @@
             
         </h1>
         <div class="content">
-            <!-- # JavaScript 垃圾回收机制 -->
-
-<p>不管什么程序语言，内存生命周期基本是一致的：  </p>
+            <p>不管什么程序语言，内存生命周期基本是一致的：  </p>
 <ol>
 <li>分配你所需要的内存</li>
 <li>使用分配到的内存（读、写）</li>
@@ -209,7 +216,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                    <a class="has-link-grey -link" href="/tags/Garbage-Collection/">Garbage_Collection</a>, <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>, <a class="has-link-grey -link" href="/tags/Memory-Management/">Memory_Management</a>
                 </div>
             </div>
         </div>
@@ -226,29 +233,19 @@
         <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
         <div class="buttons is-centered">
             
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
                 <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
 
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="allen5205189@gmail.com" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
 
                 
         </div>
@@ -260,10 +257,17 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/cuilei-test/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">cuilei-test</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/css-bfc/">
-                <span class="level-item">CSS BFC 深入浅出</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/js-data-structure-transfer/">
+                <span class="level-item">JavaScript 数据类型转换</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -278,120 +282,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered" style="flex-shrink: 1">
-                <div>
-                    
-                    <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Your name">
-                    </figure>
-                    
-                    <p class="is-size-4 is-block">
-                        Your name
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        Your title
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        文章
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        4
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        分类
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        2
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        标签
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        3
-                    </p>
-                </div>
-            </div>
-        </nav>
-        
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
-                关注我</a>
-        </div>
-        
-        
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="https://github.com/ppoffice">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
-        
-    </div>
-</div>
-    
-        
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
     
         <div class="card widget">
     <div class="card-content">
@@ -464,12 +355,46 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Asynchronous/" style="font-size: 10px;">Asynchronous</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a>
+        <a href="/tags/Asynchronous/" style="font-size: 10px;">Asynchronous</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Garbage-Collection/" style="font-size: 10px;">Garbage_Collection</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Memory-Management/" style="font-size: 10px;">Memory_Management</a>
     </div>
 </div>
     
     
-        <div class="column-right-shadow is-hidden-widescreen ">
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#JavaScript-的内存分配">
+        <span class="has-mr-6">1</span>
+        <span>JavaScript 的内存分配</span>
+        </a></li><li>
+        <a class="is-flex" href="#垃圾回收">
+        <span class="has-mr-6">2</span>
+        <span>垃圾回收</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#引用计数垃圾收集">
+        <span class="has-mr-6">2.1</span>
+        <span>引用计数垃圾收集</span>
+        </a></li><li>
+        <a class="is-flex" href="#标记-清除算法-（mark-and-sweep）">
+        <span class="has-mr-6">2.2</span>
+        <span>标记-清除算法 （mark-and-sweep）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#内存泄露">
+        <span class="has-mr-6">3</span>
+        <span>内存泄露</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
         
             <div class="card widget">
     <div class="card-content">
@@ -479,11 +404,18 @@
         
         <article class="media">
             
-            <a href="/js-gc/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript 垃圾回收机制">
-                </p>
-            </a>
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T08:47:39.000Z">2019-11-05</time></div>
+                    <a href="/cuilei-test/" class="title has-link-black-ter is-size-6 has-text-weight-normal">cuilei-test</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
             
             <div class="media-content">
                 <div class="content">
@@ -498,31 +430,6 @@
         
         <article class="media">
             
-            <a href="/css-bfc/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CSS BFC 深入浅出">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
-                    <a href="/css-bfc/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS BFC 深入浅出</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/js-data-structure-transfer/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript 数据类型转换">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
@@ -536,11 +443,18 @@
         
         <article class="media">
             
-            <a href="/js-asynchronous/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript 异步">
-                </p>
-            </a>
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
+                    <a href="/css-bfc/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS BFC 深入浅出</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
             
             <div class="media-content">
                 <div class="content">
@@ -563,6 +477,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
@@ -614,9 +539,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Garbage-Collection/">
+                        <span class="tag">Garbage_Collection</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/JavaScript/">
                         <span class="tag">JavaScript</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Memory-Management/">
+                        <span class="tag">Memory_Management</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -634,7 +573,41 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#JavaScript-的内存分配">
+        <span class="has-mr-6">1</span>
+        <span>JavaScript 的内存分配</span>
+        </a></li><li>
+        <a class="is-flex" href="#垃圾回收">
+        <span class="has-mr-6">2</span>
+        <span>垃圾回收</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#引用计数垃圾收集">
+        <span class="has-mr-6">2.1</span>
+        <span>引用计数垃圾收集</span>
+        </a></li><li>
+        <a class="is-flex" href="#标记-清除算法-（mark-and-sweep）">
+        <span class="has-mr-6">2.2</span>
+        <span>标记-清除算法 （mark-and-sweep）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#内存泄露">
+        <span class="has-mr-6">3</span>
+        <span>内存泄露</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -644,11 +617,18 @@
         
         <article class="media">
             
-            <a href="/js-gc/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript 垃圾回收机制">
-                </p>
-            </a>
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T08:47:39.000Z">2019-11-05</time></div>
+                    <a href="/cuilei-test/" class="title has-link-black-ter is-size-6 has-text-weight-normal">cuilei-test</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
             
             <div class="media-content">
                 <div class="content">
@@ -663,31 +643,6 @@
         
         <article class="media">
             
-            <a href="/css-bfc/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CSS BFC 深入浅出">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
-                    <a href="/css-bfc/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS BFC 深入浅出</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/js-data-structure-transfer/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript 数据类型转换">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
@@ -701,11 +656,18 @@
         
         <article class="media">
             
-            <a href="/js-asynchronous/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript 异步">
-                </p>
-            </a>
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-09T05:47:59.000Z">2019-06-09</time></div>
+                    <a href="/css-bfc/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS BFC 深入浅出</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/编程/">编程</a> / <a class="has-link-grey -link" href="/categories/编程/前端/">前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
             
             <div class="media-content">
                 <div class="content">
@@ -728,6 +690,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
@@ -779,9 +752,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Garbage-Collection/">
+                        <span class="tag">Garbage_Collection</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/JavaScript/">
                         <span class="tag">JavaScript</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Memory-Management/">
+                        <span class="tag">Memory_Management</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -802,7 +789,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="JavaScript 垃圾回收机制" height="28">
+                    <img src="/assets/images/cuilei-logo.png" alt="JavaScript 垃圾回收机制" height="28">
                 
                 </a>
                 <p class="is-size-7">
@@ -833,7 +820,7 @@
                 </p>
                 
                 <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/cuilei5205189">
                         
                         <i class="fab fa-github"></i>
                         
